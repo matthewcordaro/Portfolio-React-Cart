@@ -1,4 +1,4 @@
-import { FaCartPlus } from 'react-icons/fa';
+import { FaCartPlus } from "react-icons/fa"
 const Navbar = () => {
   return (
     <nav>
@@ -12,7 +12,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

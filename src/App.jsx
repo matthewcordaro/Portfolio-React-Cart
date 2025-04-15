@@ -1,6 +1,6 @@
 // components
-import Navbar from './Navbar';
-import CartContainer from './CartContainer';
+import Navbar from "./Navbar"
+import CartContainer from "./CartContainer"
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <Navbar />
       <CartContainer />
     </main>
-  );
+  )
 }
 
-export default App;
+export default App
