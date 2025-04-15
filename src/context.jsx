@@ -1,14 +1,27 @@
 import { createContext, useContext, useEffect, useReducer } from "react"
+import reducer from "./reducer"
+import {
+  EMPTY_CART,
+  REMOVE,
+  INCREASE,
+  DECREASE,
+  LOADING,
+  DISPLAY_ITEMS,
+} from "./actions"
 
 const AppContext = createContext()
-export const useGlobalContest = () => useContext(AppContext)
+
+const initialState = {
+  loading: false,
+  cart: [],
+}
 
 export function AppProvider({ children }) {
-  const greeting = "hello"
-  const greeting2 = "world"
+  const [state, dispatch] = useReducer(reducer, initialState)
+
   return (
-    <AppContext.Provider value={{ greeting, greeting2 }}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
   )
 }
+
+export const useGlobalContest = () => useContext(AppContext)
