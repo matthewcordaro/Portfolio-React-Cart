@@ -33,9 +33,10 @@ const reducer = (state, { type, payload }) => {
       })
       return { ...state, cart: decreaseItemCart }
     case LOADING:
-      return
+      return { ...state, loading: true }
     case DISPLAY_ITEMS:
-      return
+      const newItems = new Map(payload.cart.map((item) => [item.id, item]))
+      return { ...state, loading: false, cart: newItems }
     default:
       throw new Error("no matching action type : " + type)
   }
