@@ -12,24 +12,26 @@ const reducer = (state, { type, payload }) => {
     case EMPTY_CART:
       return { ...state, cart: new Map() }
     case REMOVE:
-      return { ...state, cart: increaseCart.delete(payload.id) }
+      const removeItemCart = new Map(state.cart)
+      removeItemCart.delete(payload.id)
+      return { ...state, cart: removeItemCart }
     case INCREASE:
       const increaseItem = state.cart.get(payload.id)
-      const increaseCart = new Map(state.cart)
-      increaseCart.set(payload.id, {
+      const increaseItemCart = new Map(state.cart)
+      increaseItemCart.set(payload.id, {
         ...increaseItem,
         amount: increaseItem.amount + 1,
       })
-      return { ...state, cart: increaseCart }
+      return { ...state, cart: increaseItemCart }
     case DECREASE:
       const decreaseItem = state.cart.get(payload.id)
       if (decreaseItem.amount <= 1) return { ...state }
-      const decreaseCart = new Map(state.cart)
-      decreaseCart.set(payload.id, {
+      const decreaseItemCart = new Map(state.cart)
+      decreaseItemCart.set(payload.id, {
         ...decreaseItem,
         amount: decreaseItem.amount - 1,
       })
-      return { ...state, cart: decreaseCart }
+      return { ...state, cart: decreaseItemCart }
     case LOADING:
       return
     case DISPLAY_ITEMS:

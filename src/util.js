@@ -2,10 +2,10 @@ export function getTotals(cart) {
   console.log(cart)
   let totalAmount = 0
   let totalCost = 0
-  // for (item in Array.from(cart.toArray())) {
-  //   const amount = item.amount
-  //   totalCost += item.price * amount
-  //   totalAmount += amount
-  // }
+  for (let item of cart.values()) {
+    const { price, amount } = item
+    totalCost += price * amount
+    totalAmount += amount
+  }
   return { totalAmount, totalCost }
 }
