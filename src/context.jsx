@@ -21,6 +21,7 @@ const initialState = {
 
 export function AppProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState)
+  
   const { totalAmount, totalCost } = getTotals(state.cart)
 
   const emptyCart = () => dispatch({ type: EMPTY_CART })
@@ -43,10 +44,6 @@ export function AppProvider({ children }) {
     fetchData()
   }, [])
 
-  const setLoading = () => dispatch({ type: LOADING })
-
-  const displayItems = () => dispatch({ type: DISPLAY_ITEMS })
-
   return (
     <AppContext.Provider
       value={{
@@ -57,8 +54,6 @@ export function AppProvider({ children }) {
         removeItem,
         increaseItemCount,
         decreaseItemCount,
-        setLoading,
-        displayItems,
       }}
     >
       {children}

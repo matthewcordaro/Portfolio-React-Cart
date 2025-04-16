@@ -1,6 +1,6 @@
 import CartItem from "./CartItem"
 import { useGlobalContext } from "./context"
-import cartItems from "./data"
+
 const CartContainer = () => {
   const { cart, emptyCart, totalCost } = useGlobalContext()
 
@@ -17,6 +17,7 @@ const CartContainer = () => {
       </section>
     )
   }
+
   return (
     <section className='cart'>
       {/* cart header */}
